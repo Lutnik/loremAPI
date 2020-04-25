@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const checkRequest = require('./src/checkRequest');
 const fetchData = require('./src/fetchData');
 require('dotenv').config();
@@ -19,9 +20,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to database');
 });
-// app.get('/', (req, res) => {
-//   res.render('index');
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './front-spa/public', 'index.html'));
+});
 app.get('/api/paragraphs/:paragraphs/words/:words', async (req, res) => {
   let { paragraphs, words } = req.params;
   let response = {
