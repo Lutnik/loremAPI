@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const checkRequest = require('./src/checkRequest');
 const fetchData = require('./src/fetchData');
-
 require('dotenv').config();
 
 const app = express();
+app.use(express.static('front-spa/public'));
+app.use(cors());
+
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -16,7 +19,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to database');
 });
-
+// app.get('/', (req, res) => {
+//   res.render('index');
+// });
 app.get('/api/paragraphs/:paragraphs/words/:words', async (req, res) => {
   let { paragraphs, words } = req.params;
   let response = {
@@ -100,4 +105,4 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(process.env.PORT, () => console.log(`App running on port ${process.env.PORT}`));
+app.listen(process.env.PORT || 3000, () => console.log(`App running on port ${process.env.PORT || 3000}`));
