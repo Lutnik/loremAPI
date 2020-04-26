@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{"4/pF":function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),l=t.n(a),c=t("Bl7J"),r=t("vrFN");n.default=function(){return l.a.createElement(c.a,null,l.a.createElement(r.a,{title:"Detale API"}),l.a.createElement("h1",null,"Tu będzie opis API"),l.a.createElement("p",null,"Ale jeszcze go nie ma..."))}}}]);
+//# sourceMappingURL=component---src-pages-api-js-54786211fd873af5608c.js.map
