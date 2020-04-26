@@ -6,11 +6,11 @@ const FetchForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    console.log(query);
     if (query) {
       setIsLoading(true);
-      const url = process.env.NODE_ENV === 'development'
-        ? `https://guarded-chamber-22750.herokuapp.com/api/paragraphs/${query.paragraphs}/words/${query.words}`
-        : `${window.location.href}paragraphs/${query.paragraphs}/words/${query.words}`;
+      const url = `https://guarded-chamber-22750.herokuapp.com/api/paragraphs/${query.paragraphs}/words/${query.words}`;
+      console.log(`${window.location.href}paragraphs/${query.paragraphs}/words/${query.words}`);
       fetch(url)
         .then((data) => {
           if (data.ok) {
@@ -35,6 +35,7 @@ const FetchForm = () => {
 
   const formHandler = (e) => {
     e.preventDefault();
+    console.log(e.target[0].value);
     setQuery({
       paragraphs: e.target[0].value,
       words: e.target[1].value,
