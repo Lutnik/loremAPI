@@ -1,9 +1,11 @@
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Radium from 'radium';
+import headerStyle from '../css/headerStyle';
 
-const Header = ({ siteTitle }) => {
-  const data = useStaticQuery(graphql`
+const Header = ({ title }) => {
+  const bg = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "coalbg.jpg" }) {
         childImageSharp {
@@ -15,38 +17,29 @@ const Header = ({ siteTitle }) => {
     }
   `);
 
+  const bgUrl = `url(${bg.placeholderImage.childImageSharp.fluid.src})`;
+
   return (
-    <header
-      style={{
-        backgroundImage: `url(${data.placeholderImage.childImageSharp.fluid.src})`,
-        marginBottom: '1.45rem',
-      }}
-    >
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 960,
-          padding: '1rem 0',
-        }}
-      >
-        <h1 style={{ margin: 0, display: 'flex', justifyContent: 'space-between' }}>
-          <Link to="/"> { siteTitle } </Link>
-          <div>
-            <Link to="/api"> API </Link>
-            <Link to="/contact"> Kontakt </Link>
-          </div>
-        </h1>
-      </div>
+    <header style={{ ...headerStyle.root, backgroundImage: bgUrl }}>
+      <h1 style={headerStyle.h1}>
+        <span>
+          <Link to="/" className="headerLink" style={headerStyle.a}>{ title }</Link>
+        </span>
+        <span>
+          <Link to="/api" className="headerLink" style={headerStyle.a}>API</Link>
+          <Link to="/contact" className="headerLink" style={headerStyle.a}>Kontakt</Link>
+        </span>
+      </h1>
     </header>
   );
 };
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  title: PropTypes.string,
 };
 
 Header.defaultProps = {
-  siteTitle: '',
+  title: '',
 };
 
-export default Header;
+export default Radium(Header);

@@ -5,14 +5,20 @@ const fetchData = async (wordsAmount) => {
     const output = await Word.aggregate([
       { $sample: { size: wordsAmount } },
     ]);
+    if (!Array.isArray(output)) {
+      return {
+        err: 'Response incorrect, server error, please try again later',
+        data: null,
+      };
+    }
     return {
-      status: true,
+      err: null,
       data: output,
     };
   } catch (err) {
     return {
-      status: false,
-      data: err.message,
+      err: `An error has occured: ${err.message}`,
+      data: null,
     };
   }
 };

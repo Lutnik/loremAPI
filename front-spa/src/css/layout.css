@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-weight: normal;
+  word-wrap: break-word;
+}
+
+#bg .gatsby-image-wrapper {
+  height: 100%;
+}
+
+.headerLink:hover {
+  background-color: #7ee0ec;
+  border-radius: 0.1em;
+}
+
+@media only screen and (max-width: 480px) {
+body {
+  overflow: visible;
+}
+  header {
+    font-size: 70%;
+  }
+}

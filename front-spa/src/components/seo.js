@@ -63,12 +63,14 @@ function SEO({
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Montserrat:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
+    </Helmet>
   );
 }
 
 SEO.defaultProps = {
-  lang: 'en',
+  lang: 'pl',
   meta: [],
   description: '',
 };

@@ -1,18 +1,28 @@
 import React from 'react';
-import { Link } from 'gatsby';
-
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import FetchForm from '../components/FetchForm';
 
-const IndexPage = () => (
+const Index = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Tu będzie tytuł</h1>
-    <p>A tu jakiś tekst</p>
-    <p>Prawdopodobnie</p>
+    <SEO title="Home" keywords={['lorem', 'ślunska', 'śląska', 'godko', 'gadka', 'api', 'generator']} />
+    <h2>Lorem ipsum we ślůnskij godce</h2>
+    <h4 style={{ marginBottom: '0.5em' }}>
+      Czy zawsze marzyłeś o tym, aby Twój kontent był po śląsku?
+      Od dzisiaj to możliwe!
+    </h4>
+    <p style={{ marginBottom: '0.5em' }}>
+      &quot;Po co mi kolejny generator lorem?&quot;, zapytasz?
+      <br />
+      A ja odpowiem obejrzyj&nbsp;
+      <a href="https://www.youtube.com/watch?v=hrwLBeOcfms" target="new">TO</a>
+      &nbsp;albo&nbsp;
+      <a href="https://www.youtube.com/watch?v=osZ4KpUKPNo" target="new">TO</a>
+      &nbsp;i nie zadawaj więcej takich pytań...
+    </p>
+    <p> Wybierz, ile chcesz paragrafów oraz słów w każdym z nich: </p>
     <FetchForm />
   </Layout>
 );
 
-export default IndexPage;
+export default Index;

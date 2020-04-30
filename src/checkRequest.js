@@ -1,27 +1,28 @@
 const checkRequest = (paragraphs, wordsPerParagraph) => {
-  const intP = parseInt(paragraphs, 10);
-  const intW = parseInt(wordsPerParagraph, 10);
-
-  if (!intP || !intW) {
+  if (!paragraphs || !wordsPerParagraph) {
     return {
       status: 465,
-      body: 'Invalid values! Use /paragraphs/XXX/words/YYY e.g. /paragraphs/2/words/30',
+      error: 'Invalid values! Use /paragraphs/XXX/words/YYY e.g. /paragraphs/2/words/30',
+      body: null,
     };
   }
-  if (intP < 0 || intW < 0) {
+  if (paragraphs < 0 || wordsPerParagraph < 0) {
     return {
       status: 466,
-      body: 'Invalid numbers! Use /paragraphs/XXX/words/YYY e.g. /paragraphs/2/words/30',
+      error: 'Invalid numbers! Use /paragraphs/XXX/words/YYY e.g. /paragraphs/2/words/30',
+      body: null,
     };
   }
-  if (intP > 10 || intW > 100) {
+  if (paragraphs > 10 || wordsPerParagraph > 100) {
     return {
       status: 467,
-      body: 'Too many paragraphs or words (max is 10 and 100 respectively)',
+      error: 'Too many paragraphs or words (max is 10 and 100 respectively)',
+      body: null,
     };
   }
   return {
     status: 200,
+    error: null,
     body: null,
   };
 };

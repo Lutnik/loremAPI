@@ -27,7 +27,7 @@ const Background = () => {
         zIndex: -1,
       }}
     >
-      <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+      <Img fluid={data.placeholderImage.childImageSharp.fluid} alt="background" />
     </div>
   );
 };

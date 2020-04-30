@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Form from './Form';
+import Results from './Results';
 
 const FetchForm = () => {
   const [contents, setContents] = useState();
@@ -6,22 +8,17 @@ const FetchForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log(query);
     if (query) {
       setIsLoading(true);
       const url = `https://guarded-chamber-22750.herokuapp.com/api/paragraphs/${query.paragraphs}/words/${query.words}`;
-      console.log(`${window.location.href}paragraphs/${query.paragraphs}/words/${query.words}`);
       fetch(url)
         .then((data) => {
-          if (data.ok) {
-            return data.json();
-          }
+          if (data.ok) return data.json();
           throw new Error('Network issues, please retry');
         })
         .then((resp) => {
-          console.log(resp);
-          setContents(resp);
           setIsLoading(false);
+          setContents(resp);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -35,41 +32,16 @@ const FetchForm = () => {
 
   const formHandler = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
     setQuery({
       paragraphs: e.target[0].value,
       words: e.target[1].value,
     });
   };
+
   return (
     <section>
-      <form onSubmit={formHandler}>
-        <label htmlFor="paragraphs">
-          Paragrafy:
-          <input type="text" id="paragraphs" />
-        </label>
-        <label htmlFor="words">
-          Słowa:
-          <input type="text" id="words" />
-        </label>
-        <button type="submit"> Poproszę </button>
-      </form>
-      { isLoading
-        ? (
-          <p> Wczytuję </p>
-        )
-        : (
-          contents
-            ? (
-              <section>
-                <p>{ contents.status }</p>
-                { contents.body.map((w, i) => (<p key={i}>{ w }</p>)) }
-              </section>
-            )
-            : (
-              <p> Tu będzie gadało </p>
-            )
-        )}
+      <Form formHandler={formHandler} />
+      <Results isLoading={isLoading} contents={contents} />
     </section>
   );
 };

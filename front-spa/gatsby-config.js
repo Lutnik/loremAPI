@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Lorem Ślunskum!',
+    title: 'Lorem Ślůnskum!',
     description: 'Spraw, aby Twój kontent mówił po śląsku!',
     author: 'Lutnik',
   },
@@ -14,6 +14,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-sharp',
+    // 'gatsby-plugin-layout',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',

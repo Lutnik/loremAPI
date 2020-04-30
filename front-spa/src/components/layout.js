@@ -1,11 +1,12 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Background from './Background';
-import Header from './header';
-import './layout.css';
+import Header from './Header';
+import Footer from './Footer';
+import '../css/layout.css';
+import mainStyle from '../css/mainStyle';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,28 +21,14 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header title={data.site.siteMetadata.title} />
       <div>
         <Background />
-        <main
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <section>{children}</section>
-          <footer>
-            ©
-            {' '}
-            {new Date().getFullYear()}
-            , Built with
-            {' '}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+        <main style={mainStyle.root}>
+          {children}
         </main>
       </div>
+      <Footer />
     </>
   );
 };
