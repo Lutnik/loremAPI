@@ -4,7 +4,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const API = () => {
-  const appUrl = 'localhost:3000';
+  const appUrl = 'https://lorem-silesium.herokuapp.com/';
   const codeStyle = {
     fontWeight: 600,
     background: 'rgba(255, 255, 255, 0.6)',
@@ -29,9 +29,7 @@ const API = () => {
           Pobieraj dane z poniższego adresu:
         </p>
         <code style={codeStyle}>
-          https://
-          {appUrl}
-          /api/paragraphs/XXX/words/YYY
+          {`${appUrl}api/paragraphs/XXX/words/YYY`}
         </code>
         <br />
         <span style={{ fontSize: 'small' }}>
