@@ -31,6 +31,8 @@ const FetchForm = () => {
   }, [query]);
 
   const formHandler = (e) => {
+    console.log(e.target[0].value);
+    console.log(e.target[1].value);
     e.preventDefault();
     setQuery({
       paragraphs: e.target[0].value,

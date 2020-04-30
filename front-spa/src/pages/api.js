@@ -16,7 +16,8 @@ const API = () => {
     background: 'rgba(255, 255, 255, 0.6)',
     fontSize: 'large',
     display: 'inline-block',
-    width: '5em',
+    width: '4em',
+    marginRight: '0.5em',
   };
 
   return (

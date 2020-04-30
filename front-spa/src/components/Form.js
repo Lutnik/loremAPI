@@ -28,26 +28,26 @@ const Form = ({ formHandler }) => {
   return (
     <form onSubmit={formHandler} style={formStyle.form}>
       <select
-        defaultValue={3}
         style={formStyle.select}
-        onChange={(e) => polishIsHard(e.target.value)}
+        onChange={(op) => polishIsHard(op.target.value)}
         required
+        defaultValue="3"
       >
-        <option> 1 </option>
-        <option> 2 </option>
-        <option selected> 3 </option>
-        <option> 4 </option>
-        <option> 5 </option>
+        <option value="1"> 1 </option>
+        <option value="2"> 2 </option>
+        <option value="3"> 3 </option>
+        <option value="4"> 4 </option>
+        <option value="5"> 5 </option>
       </select>
       <select
-        defaultValue="50"
         ref={par}
-        style={{ ...formStyle.select, width: '6em' }}
+        style={formStyle.select}
         required
+        defaultValue="50"
       >
-        <option value="20" id="kr"> krótkie </option>
-        <option value="50" id="sr"> średnie </option>
-        <option value="80" id="dl"> długie </option>
+        <option value="20">krótkie</option>
+        <option value="50">średnie</option>
+        <option value="80">długie</option>
       </select>
       <label style={formStyle.label} ref={label}> paragrafy </label>
       <button style={formStyle.select} type="submit"> poproszę </button>
