@@ -12,7 +12,7 @@ export default {
     fontFamily: 'sans-serif',
     fontWeight: '600',
     color: '#222',
-    width: '6em',
+    padding: '0 0.2em',
     textAlign: 'center',
   },
   select: {
@@ -26,7 +26,7 @@ export default {
     width: 'auto',
     maxWidth: '100%',
     boxSizing: 'border-box',
-    margin: '0.2em',
+    margin: '0.2em 0.2em 0.1em 0',
     border: '1px solid #aaa',
     boxShadow: '1px 3px 8px rgba(0,0,0,0.5)',
     borderRadius: '0.3em',
