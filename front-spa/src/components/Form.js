@@ -35,7 +35,7 @@ const Form = ({ formHandler }) => {
       >
         <option> 1 </option>
         <option> 2 </option>
-        <option default> 3 </option>
+        <option selected> 3 </option>
         <option> 4 </option>
         <option> 5 </option>
       </select>

@@ -10,7 +10,7 @@ const FetchForm = () => {
   useEffect(() => {
     if (query) {
       setIsLoading(true);
-      const url = `https://guarded-chamber-22750.herokuapp.com/api/paragraphs/${query.paragraphs}/words/${query.words}`;
+      const url = `https://lorem-silesium.herokuapp.com/api/paragraphs/${query.paragraphs}/words/${query.words}`;
       fetch(url)
         .then((data) => {
           if (data.ok) return data.json();
