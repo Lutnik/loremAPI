@@ -1,31 +1,19 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const checkRequest = require('./src/checkRequest');
 const fetchData = require('./src/fetchData');
 const parseResponse = require('./src/parseResponse');
+const dbConnect = require('./src/db');
 require('dotenv').config();
 
 const app = express();
 app.use(express.static('front-spa/public'));
 app.use(cors());
 
-// DATABASE CONFIG
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('Connected to database');
-});
+dbConnect();
 
 // ROUTES
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './front-spa/public', 'index.html'));
-});
 
 app.get('/api/paragraphs/:paragraphs/words/:words', async (req, res) => {
   let { paragraphs, words } = req.params;
@@ -45,12 +33,16 @@ app.get('/api/paragraphs/:paragraphs/words/:words', async (req, res) => {
   return res.json(response);
 });
 
-app.get('*', (req, res) => {
+app.get('/api/*', (req, res) => {
   res.json({
     status: 404,
     error: 'Invalid URL',
     body: null,
   });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './front-spa/public', 'index.html'));
 });
 
 app.listen(process.env.PORT || 3000, () => console.log(`App running on port ${process.env.PORT || 3000}`));

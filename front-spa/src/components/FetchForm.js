@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Form from './Form';
 import Results from './Results';
+import fetchAPI from '../lorem-api/fetchAPI';
 
 const FetchForm = () => {
   const [contents, setContents] = useState();
@@ -10,12 +11,7 @@ const FetchForm = () => {
   useEffect(() => {
     if (query) {
       setIsLoading(true);
-      const url = `https://lorem-slunskum.pl//api/paragraphs/${query.paragraphs}/words/${query.words}`;
-      fetch(url)
-        .then((data) => {
-          if (data.ok) return data.json();
-          throw new Error('Network issues, please retry');
-        })
+      fetchAPI(query.paragraphs, query.words)
         .then((resp) => {
           setIsLoading(false);
           setContents(resp);
@@ -31,8 +27,6 @@ const FetchForm = () => {
   }, [query]);
 
   const formHandler = (e) => {
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
     e.preventDefault();
     setQuery({
       paragraphs: e.target[0].value,
